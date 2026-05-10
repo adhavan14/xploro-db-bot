@@ -1,8 +1,5 @@
 fastapi
-uvicorn[standard]
+uvicorn
 anthropic
 python-multipart
 python-dotenv
-mysql-connector-python
-tabulate
-python-dateutil
