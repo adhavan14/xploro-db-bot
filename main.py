@@ -1,5 +1,4 @@
 import os
-from contextlib import asynccontextmanager
 from typing import Optional
 
 import anthropic
@@ -25,20 +24,10 @@ def get_client() -> anthropic.Anthropic:
 # APP
 # ─────────────────────────────────────────
 
-@asynccontextmanager
-async def lifespan(app: FastAPI):
-    # Validate API key on startup
-    key = os.getenv("ANTHROPIC_API_KEY")
-    if not key:
-        raise RuntimeError("ANTHROPIC_API_KEY missing in .env")
-    print("✅ Anthropic API key loaded.")
-    yield
-
 app = FastAPI(
     title="Claude Files API",
     description="Upload DB exports and query them via Claude",
     version="1.0.0",
-    lifespan=lifespan,
 )
 
 app.add_middleware(
