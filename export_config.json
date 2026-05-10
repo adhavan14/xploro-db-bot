@@ -1,0 +1,229 @@
+{
+  "db": {
+    "host": "digitalwall-prod.cvisiakm8upv.ap-south-1.rds.amazonaws.com",
+    "port": 3306,
+    "user": "admin",
+    "password": "DtwinClub123",
+    "database": "DigitalWall-Production"
+  },
+
+  "business_table": {
+    "table": "BusinessDetail",
+    "pk": "BusinessDetailKey",
+    "business_id_col": "BusinessDetailKey"
+  },
+
+  "output_file": "db_export.md",
+  "row_limit": "100",
+  "date_filter": {
+    "enabled": true,
+    "days": 1,
+    "column": "CreatedAt",
+    "fallback_column": "ModifiedAt"
+  },
+  "tables": [
+
+    {
+      "table": "BusinessAnalytics",
+      "link": "direct",
+      "business_id_col": "BusinessDetailKey"
+    },
+    {
+      "table": "BusinessDetail",
+      "link": "direct",
+      "business_id_col": "StatusListKey"
+    },
+    {
+      "table": "BusinessConfiguration",
+      "link": "direct",
+      "business_id_col": "BusinessDetailKey"
+    },
+
+    {
+      "table": "BusinessGMBSiteDetail",
+      "link": "direct",
+      "business_id_col": "BusinessDetailKey"
+    },
+    {
+      "table": "BusinessScreenMonitor",
+      "link": "direct",
+      "business_id_col": "BusinessDetailKey"
+    },
+    {
+      "table": "BusinessSurveyDetail",
+      "link": "direct",
+      "business_id_col": "BusinessDetailKey"
+    },
+    {
+      "table": "FacebookAdComment",
+      "link": "direct",
+      "business_id_col": "BusinessDetailKey"
+    },
+    {
+      "table": "FacebookCommentDetail",
+      "link": "direct",
+      "business_id_col": "BusinessDetailKey"
+    },
+    {
+      "table": "FacebookCommonPrompt",
+      "link": "direct",
+      "business_id_col": "BusinessDetailKey"
+    },
+    {
+      "table": "FacebookDMPrompt",
+      "link": "direct",
+      "business_id_col": "BusinessDetailKey"
+    },
+    {
+      "table": "FacebookDmConversation",
+      "link": "direct",
+      "business_id_col": "BusinessDetailKey"
+    },
+    {
+      "table": "FacebookDmKeywordDetail",
+      "link": "direct",
+      "business_id_col": "BusinessDetailKey"
+    },
+    {
+      "table": "FacebookPostCommonKeywordDetail",
+      "link": "direct",
+      "business_id_col": "BusinessDetailKey"
+    },
+    {
+      "table": "Insight",
+      "link": "direct",
+      "business_id_col": "BusinessDetailKey"
+    },
+    {
+      "table": "InsightsPostDetails",
+      "link": "direct",
+      "business_id_col": "BusinessDetailKey"
+    },
+    {
+      "table": "InstaComment",
+      "link": "direct",
+      "business_id_col": "BusinessDetailKey"
+    },
+    {
+      "table": "InstaCommentDetail",
+      "link": "direct",
+      "business_id_col": "BusinessDetailKey"
+    },
+    {
+      "table": "InstaCommonPrompt",
+      "link": "direct",
+      "business_id_col": "BusinessDetailKey"
+    },
+    {
+      "table": "InstaDMPrompt",
+      "link": "direct",
+      "business_id_col": "BusinessDetailKey"
+    },
+    {
+      "table": "InstaDmConversation",
+      "link": "direct",
+      "business_id_col": "BusinessDetailKey"
+    },
+    {
+      "table": "InstaDmKeywordDetail",
+      "link": "direct",
+      "business_id_col": "BusinessDetailKey"
+    },
+    {
+      "table": "InstaPostCommonKeywordDetail",
+      "link": "direct",
+      "business_id_col": "BusinessDetailKey"
+    },
+    {
+      "table": "BusinessType",
+      "link": "indirect",
+      "via_table": "StatusList",
+      "via_join": "StatusList.StatusListKey = BusinessType.StatusListKey",
+      "via_business_id_col": "StatusList.StatusListKey"
+    },
+    {
+      "table": "FacebookAdCreative",
+      "link": "indirect",
+      "via_table": "StatusList",
+      "via_join": "StatusList.StatusListKey = FacebookAdCreative.StatusListKey",
+      "via_business_id_col": "StatusList.StatusListKey"
+    },
+    {
+      "table": "FacebookDmMessage",
+      "link": "indirect",
+      "via_table": "StatusList",
+      "via_join": "StatusList.StatusListKey = FacebookDmMessage.StatusListKey",
+      "via_business_id_col": "StatusList.StatusListKey"
+    },
+    {
+      "table": "FacebookPostDetail",
+      "link": "indirect",
+      "via_table": "StatusList",
+      "via_join": "StatusList.StatusListKey = FacebookPostDetail.StatusListKey",
+      "via_business_id_col": "StatusList.StatusListKey"
+    },
+    {
+      "table": "FacebookPostKeywordDetail",
+      "link": "indirect",
+      "via_table": "StatusList",
+      "via_join": "StatusList.StatusListKey = FacebookPostKeywordDetail.StatusListKey",
+      "via_business_id_col": "StatusList.StatusListKey"
+    },
+    {
+      "table": "FacebookPostPrompt",
+      "link": "indirect",
+      "via_table": "FacebookPostDetail",
+      "via_join": "FacebookPostPrompt.FacebookPostDetailKey = FacebookPostDetail.FacebookPostDetailKey",
+      "via_business_id_col": "FacebookPostDetail.FacebookPostDetailKey"
+    },
+    {
+      "table": "InsightsList",
+      "link": "indirect",
+      "via_table": "StatusList",
+      "via_join": "InsightsList.StatusListKey = StatusList.StatusListKey",
+      "via_business_id_col": "StatusList.StatusListKey"
+    },
+    {
+      "table": "InsightsType",
+      "link": "indirect",
+      "via_table": "InsightsList",
+      "via_join": "InsightsList.InsightsTypeKey = InsightsType.InsightsTypeKey",
+      "via_business_id_col": "InsightsList.InsightsTypeKey"
+    },
+    {
+      "table": "InsightsDetail",
+      "link": "indirect",
+      "via_table": "InsightsList",
+      "via_join": "InsightsList.InsightsListKey = InsightsDetail.InsightsListKey",
+      "via_business_id_col": "InsightsList.InsightsListKey"
+    },
+    {
+      "table": "InstaDmMessage",
+      "link": "indirect",
+      "via_table": "InstaDmConversation",
+      "via_join": "InstaDmConversation.InstaDmConversationKey = InstaDmMessage.InstaDmConversationKey",
+      "via_business_id_col": "InstaDmConversation.InstaDmConversationKey"
+    },
+    {
+      "table": "InstaPostDetail",
+      "link": "indirect",
+      "via_table": "StatusList",
+      "via_join": "StatusList.StatusListKey = InstaPostDetail.StatusListKey",
+      "via_business_id_col": "StatusList.StatusListKey"
+    },
+    {
+      "table": "InstaPostKeywordDetail",
+      "link": "indirect",
+      "via_table": "StatusList",
+      "via_join": "StatusList.StatusListKey = InstaPostKeywordDetail.StatusListKey",
+      "via_business_id_col": "StatusList.StatusListKey"
+    },
+    {
+      "table": "InstaReplyType",
+      "link": "indirect",
+      "via_table": "StatusList",
+      "via_join": "InstaReplyType.StatusListKey = StatusList.StatusListKey",
+      "via_business_id_col": "StatusList.StatusListKey"
+    }
+  ]
+}
